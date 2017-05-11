@@ -1,7 +1,7 @@
 drone:
   admin: "admin"
   debug: "false"
-  open: "false"
+  open: "true"
   secret: "tobereplacedbyactualsecretbase64"
   orgs: ""
 

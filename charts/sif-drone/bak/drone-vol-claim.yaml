@@ -16,3 +16,11 @@ spec:
   resources:
     requests:
       storage: {{ .Values.persistence.size }}
+
+# # Persist our configs in an SQLite DB in here
+# - mountPath: /var/lib/drone
+#   name: drone-server-sqlite-db
+
+# - name: drone-server-sqlite-db
+#   persistentVolumeClaim:
+#     claimName: "drone-vol-claim"

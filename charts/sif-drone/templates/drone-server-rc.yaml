@@ -80,8 +80,8 @@ spec:
 
       volumes:
         - name: drone-server-sqlite-db
-          persistentVolumeClaim:
-            claimName: "drone-vol-claim"
+          emptyDir:
+            medium: Memory
         - name: docker-socket
           hostPath:
             path: /var/run/docker.sock
