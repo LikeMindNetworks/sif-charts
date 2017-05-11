@@ -1,0 +1,18 @@
+drone:
+  admin: "admin"
+  debug: "false"
+  open: "false"
+  secret: "tobereplacedbyactualsecretbase64"
+  orgs: ""
+
+db:
+  driver: "sqlite3"
+  dataSource: "/var/lib/drone/drone.sqlite"
+
+github:
+  enabled: "true"
+  client: "tobereplacedbyactualsecretbase64"
+  secret: "tobereplacedbyactualsecretbase64"
+
+persistence:
+  size: "10Gi"

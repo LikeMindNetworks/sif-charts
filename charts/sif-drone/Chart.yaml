@@ -1,0 +1,5 @@
+name: sif-drone
+apiVersion: v1
+description: A Helm chart for Drone on Kubernetes
+version: 0.0.3
+icon: http://readme.drone.io/logo.svg

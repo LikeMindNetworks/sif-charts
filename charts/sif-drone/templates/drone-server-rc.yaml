@@ -1,0 +1,87 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: drone-server
+spec:
+  replicas: 1
+  selector:
+    name: drone-server
+  template:
+    metadata:
+      labels:
+        name: drone-server
+    spec:
+      containers:
+        - image: drone/drone:0.5
+          imagePullPolicy: Always
+          name: drone-server
+          env:
+            - name: DRONE_SERVER_ADDR
+              value: ":80"
+
+            - name: DRONE_DEBUG
+              value: "{{.Values.drone.debug}}"
+
+            - name: DRONE_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: sifdronesecret
+                  key: dronesecret
+
+            - name: DRONE_DATABASE_DRIVER
+              value: {{.Values.db.driver}}
+
+            - name: DRONE_DATABASE_DATASOURCE
+              value: {{.Values.db.dataSource}}
+
+            - name: DRONE_OPEN
+              value: "{{.Values.drone.open}}"
+
+            - name: DRONE_ORGS
+              value: {{.Values.drone.orgs}}
+
+            - name: DRONE_ADMIN
+              value: {{.Values.drone.admin}}
+
+            - name: DRONE_ADMIN_ALL
+              value: "false"
+
+            - name: DRONE_GITHUB
+              value: "{{.Values.github.enabled}}"
+
+            - name: DRONE_GITHUB_CLIENT
+              valueFrom:
+                secretKeyRef:
+                  name: sifdronesecret
+                  key: githubclient
+
+            - name: DRONE_GITHUB_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: sifdronesecret
+                  key: githubsecret
+
+          ports:
+            - containerPort: 80
+              protocol: TCP
+
+          volumeMounts:
+            # Persist our configs in an SQLite DB in here
+            - mountPath: /var/lib/drone
+              name: drone-server-sqlite-db
+            # Enables Docker in Docker
+            - mountPath: /var/run/docker.sock
+              name: docker-socket
+
+          resources:
+            requests:
+              cpu: 40m
+              memory: 32Mi
+
+      volumes:
+        - name: drone-server-sqlite-db
+          persistentVolumeClaim:
+            claimName: "drone-vol-claim"
+        - name: docker-socket
+          hostPath:
+            path: /var/run/docker.sock

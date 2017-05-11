@@ -1,0 +1,48 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: drone-agent
+  labels:
+    heritage: drone-demos
+spec:
+  replicas: 1
+  selector:
+    name: drone-agent
+  template:
+    metadata:
+      labels:
+        name: drone-agent
+    spec:
+      containers:
+        - image: drone/drone:0.5
+          imagePullPolicy: Always
+          name: drone-agent
+          command:
+            - "/drone"
+            - "agent"
+
+          env:
+            - name: DRONE_SERVER
+              value: ws://drone-server.drone/ws/broker
+
+            - name: DRONE_DEBUG
+              value: "{{.Values.drone.debug}}"
+
+            - name: DRONE_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: sifdronesecret
+                  key: dronesecret
+
+          resources:
+            requests:
+              cpu: 100m
+              memory: 64Mi
+          volumeMounts:
+            # Enables Docker in Docker
+            - mountPath: /var/run/docker.sock
+              name: docker-socket
+      volumes:
+        - name: docker-socket
+          hostPath:
+            path: /var/run/docker.sock
