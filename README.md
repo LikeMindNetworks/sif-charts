@@ -17,3 +17,6 @@ helm charts for sif clusters
   - http://readme.drone.io/questions/how-to-build-publish-docker-images/
   - http://readme.drone.io/0.5/download-private-docker-images-secrets/
   - don't forget to sign to .drone.yml file
+- Github integration
+  - required to register an oauth app with github
+  - http://readme.drone.io/admin/setup-github/
