@@ -8,8 +8,7 @@ spec:
   ports:
     - name: http
       port: 80
-      protocol: TCP
-      targetPort: 80
+      nodePort: 30000
   selector:
     name: drone-server
-  type: LoadBalancer
+  type: NodePort
