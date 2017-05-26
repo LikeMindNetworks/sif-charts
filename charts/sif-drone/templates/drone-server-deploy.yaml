@@ -4,9 +4,6 @@ metadata:
   name: drone-server
 spec:
   replicas: 1
-  selector:
-    match-labels:
-      name: drone-server
   template:
     metadata:
       labels:
