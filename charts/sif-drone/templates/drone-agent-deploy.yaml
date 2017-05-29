@@ -31,6 +31,8 @@ spec:
                 secretKeyRef:
                   name: sifdronesecret
                   key: dronesecret
+            - name: DOCKER_API_VERSION
+              value: "1.24"
 
           resources:
             requests:
