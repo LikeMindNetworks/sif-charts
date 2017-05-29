@@ -9,14 +9,17 @@ helm charts for sif clusters
   - resource on alternative dbs:
     - http://readme.drone.io/admin/database-engines/
 - Drone Cli
-  - http://docs.drone.io/cli-installation/
+  - http://docs.drone.io/database-settings/
   - connect to remote set the following env vars:
     - DRONE_SERVER
     - DRONE_TOKEN: this is from the drone ui
 - How To publish docker images to private repository
-  - http://readme.drone.io/questions/how-to-build-publish-docker-images/
-  - http://readme.drone.io/0.5/download-private-docker-images-secrets/
-  - don't forget to sign to .drone.yml file
+  - http://plugins.drone.io/drone-plugins/drone-docker/
+  - Secrets: http://docs.drone.io/manage-secrets/
+  - Use plugins/ecr image to push to ECR
+  - http://plugins.drone.io/ for other plugin images
+
+
 - Github integration
   - required to register an oauth app with github
-  - http://readme.drone.io/admin/setup-github/
+  - http://docs.drone.io/install-for-github/
