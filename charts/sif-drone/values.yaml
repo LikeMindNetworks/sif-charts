@@ -4,6 +4,7 @@ drone:
   open: "true"
   secret: "tobereplacedbyactualsecretbase64"
   orgs: ""
+  host: ""
 
 db:
   driver: "sqlite3"

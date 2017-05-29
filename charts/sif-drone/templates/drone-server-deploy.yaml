@@ -17,6 +17,9 @@ spec:
             - name: DRONE_SERVER_ADDR
               value: ":80"
 
+            - name: DRONE_HOST
+              value: "{{.Values.drone.host}}"
+
             - name: DRONE_DEBUG
               value: "{{.Values.drone.debug}}"
 
