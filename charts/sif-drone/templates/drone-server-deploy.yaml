@@ -10,7 +10,7 @@ spec:
         name: drone-server
     spec:
       containers:
-        - image: drone/drone:0.5
+        - image: drone/drone:0.7
           imagePullPolicy: Always
           name: drone-server
           env:

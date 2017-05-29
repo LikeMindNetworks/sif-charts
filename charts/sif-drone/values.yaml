@@ -16,3 +16,6 @@ github:
 
 persistence:
   size: "10Gi"
+
+cluster:
+  namespace: "drone"

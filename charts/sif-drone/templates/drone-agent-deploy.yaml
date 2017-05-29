@@ -12,7 +12,7 @@ spec:
         name: drone-agent
     spec:
       containers:
-        - image: drone/drone:0.5
+        - image: drone/drone:0.7
           imagePullPolicy: Always
           name: drone-agent
           command:
@@ -21,7 +21,7 @@ spec:
 
           env:
             - name: DRONE_SERVER
-              value: ws://drone-server.drone/ws/broker
+              value: ws://drone-server.{{.Values.cluster.namespace | default}}/ws/broker
 
             - name: DRONE_DEBUG
               value: "{{.Values.drone.debug}}"
