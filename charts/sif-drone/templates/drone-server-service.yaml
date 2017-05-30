@@ -9,6 +9,9 @@ spec:
     - name: http
       port: 80
       nodePort: 30000
+    - name: https
+      port: 443
+      nodePort: 30001
   selector:
     name: drone-server
   type: NodePort

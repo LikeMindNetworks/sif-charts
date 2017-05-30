@@ -5,6 +5,7 @@ drone:
   secret: "tobereplacedbyactualsecretbase64"
   orgs: ""
   host: ""
+  letsEncrypt: "true"
 
 db:
   driver: "sqlite3"

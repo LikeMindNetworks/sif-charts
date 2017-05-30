@@ -62,8 +62,13 @@ spec:
                   name: sifdronesecret
                   key: githubsecret
 
+            - name: DRONE_LETS_ENCRYPT
+              value: "{{.Values.drone.letsEncrypt}}"
+
           ports:
             - containerPort: 80
+              protocol: TCP
+            - containerPort: 443
               protocol: TCP
 
           volumeMounts:
